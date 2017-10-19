@@ -11,6 +11,8 @@ const index = client.initIndex('mmlafleur_trimmed');
 
 const products = JSON.parse(fs.readFileSync(path.join(__dirname, 'data.json'), 'utf8')).products;
 
+//console.log(Object.keys(products[0]).length)
+
 let trimmed = [];
 products.forEach(product => {
     trimmed.push(_.pick(product, ['title', 'description', 'link', 'mobileLink', 'imageLinks', 'channel', 'ageGroup', 'availability', 'brand', 'color', 'condition', 'gender', 'categories', 'price', 'productType', 'salePrice', 'salePriceEffectiveDate','sizes', 'quantity', 'onlineOnly']));
@@ -31,3 +33,5 @@ batchData.forEach(batch => {
         if (err) console.error(Object.keys(err));
     });
 });
+
+
